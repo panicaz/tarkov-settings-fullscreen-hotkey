@@ -30,13 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.layoutTablePanel = new System.Windows.Forms.TableLayoutPanel();
-            this.SideMenu = new System.Windows.Forms.ToolStrip();
-            this.MiscsButton = new System.Windows.Forms.ToolStripButton();
-            this.ColorButton = new System.Windows.Forms.ToolStripButton();
+            this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.trayMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.enableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ColorPanel = new System.Windows.Forms.Panel();
             this.forceApplyButton = new System.Windows.Forms.Button();
             this.presetsBox = new System.Windows.Forms.GroupBox();
+            this.profile2GammaText = new System.Windows.Forms.TextBox();
+            this.profile2ContrastText = new System.Windows.Forms.TextBox();
+            this.profile2BrightnessText = new System.Windows.Forms.TextBox();
+            this.profile1GammaText = new System.Windows.Forms.TextBox();
+            this.profile1ContrastText = new System.Windows.Forms.TextBox();
+            this.profile1BrightnessText = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -58,25 +65,14 @@
             this.ContrastText = new System.Windows.Forms.TextBox();
             this.ContrastLabel = new System.Windows.Forms.Label();
             this.gammaPanel = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.GammaText = new System.Windows.Forms.TextBox();
             this.GammaBar = new System.Windows.Forms.TrackBar();
             this.GammaLabel = new System.Windows.Forms.Label();
-            this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.trayMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.enableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.profile1BrightnessText = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.profile1ContrastText = new System.Windows.Forms.TextBox();
-            this.profile1GammaText = new System.Windows.Forms.TextBox();
-            this.profile2GammaText = new System.Windows.Forms.TextBox();
-            this.profile2ContrastText = new System.Windows.Forms.TextBox();
-            this.profile2BrightnessText = new System.Windows.Forms.TextBox();
-            this.layoutTablePanel.SuspendLayout();
-            this.SideMenu.SuspendLayout();
+            this.layoutTablePanel = new System.Windows.Forms.TableLayoutPanel();
+            this.trayMenuStrip.SuspendLayout();
             this.ColorPanel.SuspendLayout();
             this.presetsBox.SuspendLayout();
             this.DVLGroupBox.SuspendLayout();
@@ -90,78 +86,48 @@
             ((System.ComponentModel.ISupportInitialize)(this.ContrastBar)).BeginInit();
             this.gammaPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GammaBar)).BeginInit();
-            this.trayMenuStrip.SuspendLayout();
+            this.layoutTablePanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // layoutTablePanel
+            // trayIcon
             // 
-            this.layoutTablePanel.ColumnCount = 2;
-            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.37594F));
-            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 89.62406F));
-            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layoutTablePanel.Controls.Add(this.SideMenu, 0, 0);
-            this.layoutTablePanel.Controls.Add(this.ColorPanel, 1, 0);
-            this.layoutTablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutTablePanel.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.layoutTablePanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.layoutTablePanel.Location = new System.Drawing.Point(0, 0);
-            this.layoutTablePanel.Name = "layoutTablePanel";
-            this.layoutTablePanel.RowCount = 1;
-            this.layoutTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.4669F));
-            this.layoutTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.5331F));
-            this.layoutTablePanel.Size = new System.Drawing.Size(932, 367);
-            this.layoutTablePanel.TabIndex = 0;
+            this.trayIcon.ContextMenuStrip = this.trayMenuStrip;
+            this.trayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("trayIcon.Icon")));
+            this.trayIcon.Text = "Tarkov Settings";
+            this.trayIcon.Visible = true;
+            this.trayIcon.DoubleClick += new System.EventHandler(this.ShowForm);
             // 
-            // SideMenu
+            // trayMenuStrip
             // 
-            this.SideMenu.AutoSize = false;
-            this.SideMenu.BackColor = System.Drawing.Color.AliceBlue;
-            this.SideMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SideMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.SideMenu.ImageScalingSize = new System.Drawing.Size(48, 48);
-            this.SideMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MiscsButton,
-            this.ColorButton});
-            this.SideMenu.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
-            this.SideMenu.Location = new System.Drawing.Point(0, 5);
-            this.SideMenu.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.SideMenu.Name = "SideMenu";
-            this.SideMenu.Size = new System.Drawing.Size(96, 357);
-            this.SideMenu.TabIndex = 1;
-            this.SideMenu.Text = "colorSettings";
+            this.trayMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.enableToolStripMenuItem,
+            this.showToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.trayMenuStrip.Name = "trayMenuStrip";
+            this.trayMenuStrip.Size = new System.Drawing.Size(110, 70);
             // 
-            // MiscsButton
+            // enableToolStripMenuItem
             // 
-            this.MiscsButton.Enabled = false;
-            this.MiscsButton.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MiscsButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.MiscsButton.Image = global::tarkov_settings.Properties.Resources.nikita;
-            this.MiscsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MiscsButton.Name = "MiscsButton";
-            this.MiscsButton.Size = new System.Drawing.Size(94, 66);
-            this.MiscsButton.Text = "Miscs";
-            this.MiscsButton.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            this.MiscsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.enableToolStripMenuItem.Checked = true;
+            this.enableToolStripMenuItem.CheckOnClick = true;
+            this.enableToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.enableToolStripMenuItem.Name = "enableToolStripMenuItem";
+            this.enableToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.enableToolStripMenuItem.Text = "Enable";
             // 
-            // ColorButton
+            // showToolStripMenuItem
             // 
-            this.ColorButton.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ColorButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ColorButton.Image = global::tarkov_settings.Properties.Resources.nikita_rainbow;
-            this.ColorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ColorButton.Name = "ColorButton";
-            this.ColorButton.Size = new System.Drawing.Size(94, 66);
-            this.ColorButton.Text = "Color";
-            this.ColorButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.showToolStripMenuItem.Text = "Show";
+            this.showToolStripMenuItem.Click += new System.EventHandler(this.ShowForm);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitFormClicked);
             // 
             // ColorPanel
             // 
@@ -171,7 +137,6 @@
             this.ColorPanel.Controls.Add(this.DisplayCombo);
             this.ColorPanel.Controls.Add(this.DVLGroupBox);
             this.ColorPanel.Controls.Add(this.colorGroupBox);
-            this.ColorPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ColorPanel.Location = new System.Drawing.Point(99, 3);
             this.ColorPanel.Name = "ColorPanel";
             this.ColorPanel.Size = new System.Drawing.Size(830, 361);
@@ -206,6 +171,54 @@
             this.presetsBox.TabStop = false;
             this.presetsBox.Text = "Presets";
             // 
+            // profile2GammaText
+            // 
+            this.profile2GammaText.Location = new System.Drawing.Point(124, 173);
+            this.profile2GammaText.Name = "profile2GammaText";
+            this.profile2GammaText.Size = new System.Drawing.Size(33, 22);
+            this.profile2GammaText.TabIndex = 25;
+            this.profile2GammaText.Text = "130";
+            // 
+            // profile2ContrastText
+            // 
+            this.profile2ContrastText.Location = new System.Drawing.Point(124, 145);
+            this.profile2ContrastText.Name = "profile2ContrastText";
+            this.profile2ContrastText.Size = new System.Drawing.Size(33, 22);
+            this.profile2ContrastText.TabIndex = 24;
+            this.profile2ContrastText.Text = "80";
+            // 
+            // profile2BrightnessText
+            // 
+            this.profile2BrightnessText.Location = new System.Drawing.Point(124, 117);
+            this.profile2BrightnessText.Name = "profile2BrightnessText";
+            this.profile2BrightnessText.Size = new System.Drawing.Size(33, 22);
+            this.profile2BrightnessText.TabIndex = 23;
+            this.profile2BrightnessText.Text = "50";
+            // 
+            // profile1GammaText
+            // 
+            this.profile1GammaText.Location = new System.Drawing.Point(124, 78);
+            this.profile1GammaText.Name = "profile1GammaText";
+            this.profile1GammaText.Size = new System.Drawing.Size(33, 22);
+            this.profile1GammaText.TabIndex = 22;
+            this.profile1GammaText.Text = "130";
+            // 
+            // profile1ContrastText
+            // 
+            this.profile1ContrastText.Location = new System.Drawing.Point(124, 50);
+            this.profile1ContrastText.Name = "profile1ContrastText";
+            this.profile1ContrastText.Size = new System.Drawing.Size(33, 22);
+            this.profile1ContrastText.TabIndex = 21;
+            this.profile1ContrastText.Text = "65";
+            // 
+            // profile1BrightnessText
+            // 
+            this.profile1BrightnessText.Location = new System.Drawing.Point(124, 22);
+            this.profile1BrightnessText.Name = "profile1BrightnessText";
+            this.profile1BrightnessText.Size = new System.Drawing.Size(33, 22);
+            this.profile1BrightnessText.TabIndex = 20;
+            this.profile1BrightnessText.Text = "50";
+            // 
             // button1
             // 
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -213,7 +226,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 80);
             this.button1.TabIndex = 17;
-            this.button1.Text = "ALL MAPS\r\nAlt+Num1";
+            this.button1.Text = "Profile 1 ALT+Num1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.AllMapButtonClick);
             // 
@@ -235,7 +248,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 80);
             this.button2.TabIndex = 18;
-            this.button2.Text = "INTERCHANGE\r\nAlt+Num2";
+            this.button2.Text = "Profile 2 \r\nAlt+Num2";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.InterchangeMapButtonClick);
             // 
@@ -357,10 +370,10 @@
             // 
             // BrightnessBar
             // 
-            this.BrightnessBar.Location = new System.Drawing.Point(13, 27);
+            this.BrightnessBar.Location = new System.Drawing.Point(13, 32);
             this.BrightnessBar.Maximum = 100;
             this.BrightnessBar.Name = "BrightnessBar";
-            this.BrightnessBar.Size = new System.Drawing.Size(397, 45);
+            this.BrightnessBar.Size = new System.Drawing.Size(402, 45);
             this.BrightnessBar.TabIndex = 18;
             this.BrightnessBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.BrightnessBar.Value = 50;
@@ -370,7 +383,7 @@
             // 
             this.BrightnessLabel.AutoSize = true;
             this.BrightnessLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BrightnessLabel.Location = new System.Drawing.Point(20, 10);
+            this.BrightnessLabel.Location = new System.Drawing.Point(10, 15);
             this.BrightnessLabel.Name = "BrightnessLabel";
             this.BrightnessLabel.Size = new System.Drawing.Size(77, 14);
             this.BrightnessLabel.TabIndex = 21;
@@ -379,7 +392,7 @@
             // 
             // BrightnessText
             // 
-            this.BrightnessText.Location = new System.Drawing.Point(424, 27);
+            this.BrightnessText.Location = new System.Drawing.Point(421, 32);
             this.BrightnessText.Name = "BrightnessText";
             this.BrightnessText.ReadOnly = true;
             this.BrightnessText.Size = new System.Drawing.Size(41, 22);
@@ -403,7 +416,7 @@
             this.ContrastBar.Location = new System.Drawing.Point(13, 39);
             this.ContrastBar.Maximum = 100;
             this.ContrastBar.Name = "ContrastBar";
-            this.ContrastBar.Size = new System.Drawing.Size(397, 45);
+            this.ContrastBar.Size = new System.Drawing.Size(402, 45);
             this.ContrastBar.TabIndex = 19;
             this.ContrastBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.ContrastBar.Value = 50;
@@ -411,7 +424,7 @@
             // 
             // ContrastText
             // 
-            this.ContrastText.Location = new System.Drawing.Point(424, 39);
+            this.ContrastText.Location = new System.Drawing.Point(421, 39);
             this.ContrastText.Name = "ContrastText";
             this.ContrastText.ReadOnly = true;
             this.ContrastText.Size = new System.Drawing.Size(41, 22);
@@ -423,7 +436,7 @@
             // 
             this.ContrastLabel.AutoSize = true;
             this.ContrastLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ContrastLabel.Location = new System.Drawing.Point(20, 22);
+            this.ContrastLabel.Location = new System.Drawing.Point(10, 22);
             this.ContrastLabel.Name = "ContrastLabel";
             this.ContrastLabel.Size = new System.Drawing.Size(63, 14);
             this.ContrastLabel.TabIndex = 22;
@@ -444,9 +457,38 @@
             this.gammaPanel.Size = new System.Drawing.Size(478, 90);
             this.gammaPanel.TabIndex = 2;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label3.Location = new System.Drawing.Point(329, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 14);
+            this.label3.TabIndex = 29;
+            this.label3.Text = "+10 alt+up";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(379, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 14);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "label2";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(20, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 14);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "-10 alt+down";
+            // 
             // GammaText
             // 
-            this.GammaText.Location = new System.Drawing.Point(424, 40);
+            this.GammaText.Location = new System.Drawing.Point(421, 40);
             this.GammaText.Name = "GammaText";
             this.GammaText.ReadOnly = true;
             this.GammaText.Size = new System.Drawing.Size(41, 22);
@@ -460,7 +502,7 @@
             this.GammaBar.Maximum = 280;
             this.GammaBar.Minimum = 40;
             this.GammaBar.Name = "GammaBar";
-            this.GammaBar.Size = new System.Drawing.Size(397, 45);
+            this.GammaBar.Size = new System.Drawing.Size(402, 45);
             this.GammaBar.TabIndex = 20;
             this.GammaBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.GammaBar.Value = 100;
@@ -470,146 +512,58 @@
             // 
             this.GammaLabel.AutoSize = true;
             this.GammaLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.GammaLabel.Location = new System.Drawing.Point(20, 23);
+            this.GammaLabel.Location = new System.Drawing.Point(10, 23);
             this.GammaLabel.Name = "GammaLabel";
             this.GammaLabel.Size = new System.Drawing.Size(42, 14);
             this.GammaLabel.TabIndex = 23;
             this.GammaLabel.Text = "Gamma";
             this.GammaLabel.DoubleClick += new System.EventHandler(this.ColorLabel_DClick);
             // 
-            // trayIcon
+            // layoutTablePanel
             // 
-            this.trayIcon.ContextMenuStrip = this.trayMenuStrip;
-            this.trayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("trayIcon.Icon")));
-            this.trayIcon.Text = "Tarkov Settings";
-            this.trayIcon.Visible = true;
-            this.trayIcon.DoubleClick += new System.EventHandler(this.ShowForm);
-            // 
-            // trayMenuStrip
-            // 
-            this.trayMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.enableToolStripMenuItem,
-            this.showToolStripMenuItem,
-            this.exitToolStripMenuItem});
-            this.trayMenuStrip.Name = "trayMenuStrip";
-            this.trayMenuStrip.Size = new System.Drawing.Size(110, 70);
-            // 
-            // enableToolStripMenuItem
-            // 
-            this.enableToolStripMenuItem.Checked = true;
-            this.enableToolStripMenuItem.CheckOnClick = true;
-            this.enableToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.enableToolStripMenuItem.Name = "enableToolStripMenuItem";
-            this.enableToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
-            this.enableToolStripMenuItem.Text = "Enable";
-            // 
-            // showToolStripMenuItem
-            // 
-            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
-            this.showToolStripMenuItem.Text = "Show";
-            this.showToolStripMenuItem.Click += new System.EventHandler(this.ShowForm);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitFormClicked);
-            // 
-            // profile1BrightnessText
-            // 
-            this.profile1BrightnessText.Location = new System.Drawing.Point(124, 22);
-            this.profile1BrightnessText.Name = "profile1BrightnessText";
-            this.profile1BrightnessText.Size = new System.Drawing.Size(33, 22);
-            this.profile1BrightnessText.TabIndex = 20;
-            this.profile1BrightnessText.Text = "50";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(20, 65);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 14);
-            this.label1.TabIndex = 27;
-            this.label1.Text = "-10 alt+down";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(379, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 14);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "label2";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(329, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 14);
-            this.label3.TabIndex = 29;
-            this.label3.Text = "+10 alt+up";
-            // 
-            // profile1ContrastText
-            // 
-            this.profile1ContrastText.Location = new System.Drawing.Point(124, 50);
-            this.profile1ContrastText.Name = "profile1ContrastText";
-            this.profile1ContrastText.Size = new System.Drawing.Size(33, 22);
-            this.profile1ContrastText.TabIndex = 21;
-            this.profile1ContrastText.Text = "65";
-            // 
-            // profile1GammaText
-            // 
-            this.profile1GammaText.Location = new System.Drawing.Point(124, 78);
-            this.profile1GammaText.Name = "profile1GammaText";
-            this.profile1GammaText.Size = new System.Drawing.Size(33, 22);
-            this.profile1GammaText.TabIndex = 22;
-            this.profile1GammaText.Text = "130";
-            // 
-            // profile2GammaText
-            // 
-            this.profile2GammaText.Location = new System.Drawing.Point(124, 173);
-            this.profile2GammaText.Name = "profile2GammaText";
-            this.profile2GammaText.Size = new System.Drawing.Size(33, 22);
-            this.profile2GammaText.TabIndex = 25;
-            this.profile2GammaText.Text = "130";
-            // 
-            // profile2ContrastText
-            // 
-            this.profile2ContrastText.Location = new System.Drawing.Point(124, 145);
-            this.profile2ContrastText.Name = "profile2ContrastText";
-            this.profile2ContrastText.Size = new System.Drawing.Size(33, 22);
-            this.profile2ContrastText.TabIndex = 24;
-            this.profile2ContrastText.Text = "80";
-            // 
-            // profile2BrightnessText
-            // 
-            this.profile2BrightnessText.Location = new System.Drawing.Point(124, 117);
-            this.profile2BrightnessText.Name = "profile2BrightnessText";
-            this.profile2BrightnessText.Size = new System.Drawing.Size(33, 22);
-            this.profile2BrightnessText.TabIndex = 23;
-            this.profile2BrightnessText.Text = "50";
+            this.layoutTablePanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("layoutTablePanel.BackgroundImage")));
+            this.layoutTablePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.layoutTablePanel.ColumnCount = 2;
+            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.37594F));
+            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 89.62406F));
+            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.layoutTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.layoutTablePanel.Controls.Add(this.ColorPanel, 1, 0);
+            this.layoutTablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutTablePanel.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.layoutTablePanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.layoutTablePanel.Location = new System.Drawing.Point(0, 0);
+            this.layoutTablePanel.Name = "layoutTablePanel";
+            this.layoutTablePanel.RowCount = 1;
+            this.layoutTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.4669F));
+            this.layoutTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.5331F));
+            this.layoutTablePanel.Size = new System.Drawing.Size(932, 367);
+            this.layoutTablePanel.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(932, 367);
             this.Controls.Add(this.layoutTablePanel);
+            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Tarkov Settings";
+            this.Text = "Tarkov Settings Fork";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.layoutTablePanel.ResumeLayout(false);
-            this.SideMenu.ResumeLayout(false);
-            this.SideMenu.PerformLayout();
+            this.trayMenuStrip.ResumeLayout(false);
             this.ColorPanel.ResumeLayout(false);
             this.ColorPanel.PerformLayout();
             this.presetsBox.ResumeLayout(false);
@@ -629,60 +583,54 @@
             this.gammaPanel.ResumeLayout(false);
             this.gammaPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GammaBar)).EndInit();
-            this.trayMenuStrip.ResumeLayout(false);
+            this.layoutTablePanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.TableLayoutPanel layoutTablePanel;
-        private System.Windows.Forms.ToolStrip SideMenu;
-        private System.Windows.Forms.ToolStripButton MiscsButton;
-        private System.Windows.Forms.ToolStripButton ColorButton;
-        private System.Windows.Forms.Panel ColorPanel;
-        
-        
-
-        private System.Windows.Forms.GroupBox colorGroupBox;
-        private System.Windows.Forms.TextBox DVLText;
-        private System.Windows.Forms.Label DVLLabel;
-        private System.Windows.Forms.TrackBar DVLBar;
-        private System.Windows.Forms.TextBox GammaText;
-        private System.Windows.Forms.TextBox ContrastText;
-        private System.Windows.Forms.TextBox BrightnessText;
-        private System.Windows.Forms.Label GammaLabel;
-        private System.Windows.Forms.Label ContrastLabel;
-        private System.Windows.Forms.Label BrightnessLabel;
-        private System.Windows.Forms.TrackBar GammaBar;
-        private System.Windows.Forms.TrackBar ContrastBar;
-        private System.Windows.Forms.TrackBar BrightnessBar;
-        private System.Windows.Forms.TableLayoutPanel colorTablePanel;
-        private System.Windows.Forms.Panel brightnessPanel;
-        private System.Windows.Forms.Panel contrastPanel;
-        private System.Windows.Forms.Panel gammaPanel;
-        private System.Windows.Forms.GroupBox DVLGroupBox;
-        private System.Windows.Forms.Panel DVLPanel;
-        private System.Windows.Forms.ComboBox DisplayCombo;
         private System.Windows.Forms.NotifyIcon trayIcon;
         private System.Windows.Forms.ContextMenuStrip trayMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem enableToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.CheckBox minimizeStartCheckBox;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.GroupBox presetsBox;
+        private System.Windows.Forms.Panel ColorPanel;
         private System.Windows.Forms.Button forceApplyButton;
-        private System.Windows.Forms.TextBox profile1BrightnessText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox profile1GammaText;
-        private System.Windows.Forms.TextBox profile1ContrastText;
+        private System.Windows.Forms.GroupBox presetsBox;
         private System.Windows.Forms.TextBox profile2GammaText;
         private System.Windows.Forms.TextBox profile2ContrastText;
         private System.Windows.Forms.TextBox profile2BrightnessText;
+        private System.Windows.Forms.TextBox profile1GammaText;
+        private System.Windows.Forms.TextBox profile1ContrastText;
+        private System.Windows.Forms.TextBox profile1BrightnessText;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.CheckBox minimizeStartCheckBox;
+        private System.Windows.Forms.ComboBox DisplayCombo;
+        private System.Windows.Forms.GroupBox DVLGroupBox;
+        private System.Windows.Forms.Panel DVLPanel;
+        private System.Windows.Forms.Label DVLLabel;
+        private System.Windows.Forms.TrackBar DVLBar;
+        private System.Windows.Forms.TextBox DVLText;
+        private System.Windows.Forms.GroupBox colorGroupBox;
+        private System.Windows.Forms.TableLayoutPanel colorTablePanel;
+        private System.Windows.Forms.Panel brightnessPanel;
+        private System.Windows.Forms.TrackBar BrightnessBar;
+        private System.Windows.Forms.Label BrightnessLabel;
+        private System.Windows.Forms.TextBox BrightnessText;
+        private System.Windows.Forms.Panel contrastPanel;
+        private System.Windows.Forms.TrackBar ContrastBar;
+        private System.Windows.Forms.TextBox ContrastText;
+        private System.Windows.Forms.Label ContrastLabel;
+        private System.Windows.Forms.Panel gammaPanel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox GammaText;
+        private System.Windows.Forms.TrackBar GammaBar;
+        private System.Windows.Forms.Label GammaLabel;
+        private System.Windows.Forms.TableLayoutPanel layoutTablePanel;
     }
 }
 

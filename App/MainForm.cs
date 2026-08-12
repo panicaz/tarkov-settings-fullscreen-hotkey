@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Net.Http;
-using System.Windows.Forms;
-using tarkov_settings.Setting;
-using tarkov_settings.GPU;
 using System.Runtime.InteropServices;
-using System.Collections.Generic;
-using System.Diagnostics;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Windows.Forms;
+using tarkov_settings.GPU;
+using tarkov_settings.Setting;
 
 namespace tarkov_settings
 {
@@ -20,7 +16,7 @@ namespace tarkov_settings
         private bool minimizeOnStart = false;
 
 
- 
+
         // DLL libraries used to manage hotkeys
         [DllImport("user32.dll")]
         public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
@@ -66,9 +62,6 @@ namespace tarkov_settings
 
             #endregion
 
-            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-            this.Text = String.Format("Tarkov Settings {0}", version);
-            _ = new UpdateNotifier(version);
 
             // Saturation Initialize
             if (gpu.Vendor != GPUVendor.NVIDIA)
@@ -80,8 +73,8 @@ namespace tarkov_settings
             {
                 DisplayCombo.Items.Add(display);
             }
-            
-            if(DisplayCombo.FindString(appSetting.display) != -1)
+
+            if (DisplayCombo.FindString(appSetting.display) != -1)
                 DisplayCombo.SelectedIndex = DisplayCombo.FindString(appSetting.display);
 
             Display.Primary = (string)DisplayCombo.SelectedItem;
@@ -168,7 +161,7 @@ namespace tarkov_settings
         }
         #endregion
 
-        public bool IsEnabled { get=> this.enableToolStripMenuItem.Checked;}
+        public bool IsEnabled { get => this.enableToolStripMenuItem.Checked; }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -189,7 +182,7 @@ namespace tarkov_settings
         private void ColorLabel_DClick(object sender, EventArgs e)
         {
             var label = sender as Label;
-            
+
             if (label.Equals(BrightnessLabel))
             {
                 BrightnessBar.Value = 50;
@@ -260,103 +253,114 @@ namespace tarkov_settings
 
         protected override void WndProc(ref Message m)
         {
-            if (m.Msg == 0x0312 && m.WParam.ToInt32() == AllMapHotkey)
-            {
-                try
-                {
-                    int profile1Brightness = int.Parse(profile1BrightnessText.Text);
-                    int profile1Contrast = int.Parse(profile1ContrastText.Text);
-                    int profile1Gamma = int.Parse(profile1GammaText.Text);
-                    BrightnessBar.Value = profile1Brightness;
-                    ContrastBar.Value = profile1Contrast;
-                    GammaBar.Value = profile1Gamma;
-                    DVLBar.Value = 10;
 
-                    cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
-                                contrast: ContrastBar.Value / 100.0,
-                                gamma: GammaBar.Value / 100.0,
-                                reset: false);
-                    cController.DVL = 10;                
-                }
-                catch
-                {
-                    MessageBox.Show("Invalid number or adjustment range exceeded");
-                }
+            // Обработка сигнала от второго экземпляра
+            if (m.Msg == Program.WM_SHOWME)
+            {
+                this.Visible = true;
+                this.ShowInTaskbar = true;
+                this.WindowState = FormWindowState.Normal;
+                this.Activate();
             }
-
-
-            if (m.Msg == 0x0312 && m.WParam.ToInt32() == InterchangeMapHotkey)
             {
-                try
+                if (m.Msg == 0x0312 && m.WParam.ToInt32() == AllMapHotkey)
                 {
-                    int profile2Brightness = int.Parse(profile2BrightnessText.Text);
-                    int profile2Contrast = int.Parse(profile2ContrastText.Text);
-                    int profile2Gamma = int.Parse(profile2GammaText.Text);
-                    BrightnessBar.Value = profile2Brightness;
-                    ContrastBar.Value = profile2Contrast;
-                    GammaBar.Value = profile2Gamma;
-                    DVLBar.Value = 10;
+                    try
+                    {
+                        int profile1Brightness = int.Parse(profile1BrightnessText.Text);
+                        int profile1Contrast = int.Parse(profile1ContrastText.Text);
+                        int profile1Gamma = int.Parse(profile1GammaText.Text);
+                        BrightnessBar.Value = profile1Brightness;
+                        ContrastBar.Value = profile1Contrast;
+                        GammaBar.Value = profile1Gamma;
+                        DVLBar.Value = 10;
 
-                    cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
-                                contrast: ContrastBar.Value / 100.0,
-                                gamma: GammaBar.Value / 100.0,
-                                reset: false);
+                        cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
+                                    contrast: ContrastBar.Value / 100.0,
+                                    gamma: GammaBar.Value / 100.0,
+                                    reset: false);
+                        cController.DVL = 10;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Invalid number or adjustment range exceeded");
+                    }
+                }
+
+
+                if (m.Msg == 0x0312 && m.WParam.ToInt32() == InterchangeMapHotkey)
+                {
+                    try
+                    {
+                        int profile2Brightness = int.Parse(profile2BrightnessText.Text);
+                        int profile2Contrast = int.Parse(profile2ContrastText.Text);
+                        int profile2Gamma = int.Parse(profile2GammaText.Text);
+                        BrightnessBar.Value = profile2Brightness;
+                        ContrastBar.Value = profile2Contrast;
+                        GammaBar.Value = profile2Gamma;
+                        DVLBar.Value = 10;
+
+                        cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
+                                    contrast: ContrastBar.Value / 100.0,
+                                    gamma: GammaBar.Value / 100.0,
+                                    reset: false);
+                        cController.DVL = 10;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Invalid number or adjustment range exceeded");
+                    }
+                }
+                if (m.Msg == 0x0312 && m.WParam.ToInt32() == DefaultHotkey)
+                {
+                    BrightnessBar.Value = 50;
+                    ContrastBar.Value = 50;
+                    GammaBar.Value = 100;
+                    DVLBar.Value = 0;
+
+                    cController.ChangeColorRamp(brightness: 0.5,
+                                                contrast: 0.50,
+                                                gamma: 1.00,
+                                                reset: false);
                     cController.DVL = 10;
                 }
-                catch
-                {
-                    MessageBox.Show("Invalid number or adjustment range exceeded");
-                }
-            }
-            if (m.Msg == 0x0312 && m.WParam.ToInt32() == DefaultHotkey)
-            {
-                BrightnessBar.Value = 50;
-                ContrastBar.Value = 50;
-                GammaBar.Value = 100;
-                DVLBar.Value = 0;
 
-                cController.ChangeColorRamp(brightness: 0.5,
-                                            contrast: 0.50,
-                                            gamma: 1.00,
-                                            reset: false);
-                cController.DVL = 10;
-            }
-
-            if (m.Msg == 0x0312 && m.WParam.ToInt32() == GammaUp)
-            {
-                if (GammaBar.Value < 280)
+                if (m.Msg == 0x0312 && m.WParam.ToInt32() == GammaUp)
                 {
-                    GammaBar.Value = GammaBar.Value + 10;
-                    cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
-                                                contrast: ContrastBar.Value / 100.0,
-                                                gamma: GammaBar.Value / 100.0,
-                                                reset: false);
+                    if (GammaBar.Value < 280)
+                    {
+                        GammaBar.Value = GammaBar.Value + 10;
+                        cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
+                                                    contrast: ContrastBar.Value / 100.0,
+                                                    gamma: GammaBar.Value / 100.0,
+                                                    reset: false);
+                    }
                 }
-            }
 
                 if (m.Msg == 0x0312 && m.WParam.ToInt32() == GammaDown)
-            {
-                if (GammaBar.Value > 40)
                 {
-                    GammaBar.Value = GammaBar.Value - 10;
+                    if (GammaBar.Value > 40)
+                    {
+                        GammaBar.Value = GammaBar.Value - 10;
+                        cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
+                                                    contrast: ContrastBar.Value / 100.0,
+                                                    gamma: GammaBar.Value / 100.0,
+                                                    reset: false);
+                    }
+
+                }
+
+                if (m.Msg == 0x0312 && m.WParam.ToInt32() == ForceApply)
+                {
                     cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
                                                 contrast: ContrastBar.Value / 100.0,
                                                 gamma: GammaBar.Value / 100.0,
                                                 reset: false);
+                    cController.DVL = DVLBar.Value;
                 }
 
+                base.WndProc(ref m);
             }
-
-            if (m.Msg == 0x0312 && m.WParam.ToInt32() == ForceApply)
-            {
-                cController.ChangeColorRamp(brightness: BrightnessBar.Value / 100.0,
-                                            contrast: ContrastBar.Value / 100.0,
-                                            gamma: GammaBar.Value / 100.0,
-                                            reset: false);
-                cController.DVL = DVLBar.Value;
-            }
-
-            base.WndProc(ref m);
         }
 
         private void TrackBar_ValueChanged(object sender, EventArgs e)
@@ -385,7 +389,7 @@ namespace tarkov_settings
             string selectedDisplay = (string)DisplayCombo.SelectedItem;
             Display.Primary = selectedDisplay;
 
-            if(Display.Primary != selectedDisplay)
+            if (Display.Primary != selectedDisplay)
             {
                 DisplayCombo.SelectedIndex = DisplayCombo.FindString(Display.Primary);
             }
